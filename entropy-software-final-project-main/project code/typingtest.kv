@@ -1,0 +1,293 @@
+#:kivy 2.1.0
+
+<TabWrapper>:
+    BoxLayout:
+        orientation:"vertical"
+        BoxLayout:
+            size_hint: 1, None
+            height: root.height * .075
+            # Button:
+            #     text: 'Login'
+            #     on_press: sm.current = 'login'
+            Button:
+                text: 'Menu'
+                on_press: sm.current = 'menu'
+            Button:
+                text: 'Typing Test'
+                on_press: sm.current = 'typingtest'
+            Button:
+                text: 'Statistics'
+                on_press: sm.current = 'statistics'
+            Button:
+                text: 'Leaderboard'
+                on_press: sm.current = 'leaderboard'
+            Button:
+                text: 'Account'
+                on_press: sm.current = 'account'
+            Button:
+                text: 'Settings'
+                on_press: sm.current = 'settings'
+        ScreenManager:
+            id: sm
+            MenuScreen:
+            TypingScreen:
+            StatisticsScreen:
+            LeaderboardScreen:
+            # LoginScreen:
+            AccountScreen:
+            SettingScreen:
+
+
+<MenuScreen>:
+    name: 'menu'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: "Typing Test Application"
+            halign: 'center'
+            valign: 'top'
+            font_size: 100
+            size_hint: (1, .5)
+
+
+<TypingScreen>:
+    name: 'typingtest'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: """And as I sat there brooding on the old, unknown world, I thought of Gatsby’s wonder when he first picked out the green light at the end of Daisy’s dock. He had come a long way to this blue lawn and his dream must have seemed so close that he could hardly fail to grasp it. He did not know that it was already behind him, somewhere back in that vast obscurity beyond the city, where the dark fields of the republic rolled on under the night. Gatsby believed in the green light, the orgastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther.... And one fine morning we’ll... So we beat on, boats against the current, borne back ceaselessly into the past."""
+            valign: 'top'
+            halign: 'left'
+            size_hint: (1, .3)
+        Button:
+            id: startButton
+            text: "Start Typing Test"
+            size_hint: (1, .1)
+        MDTextField:
+            id: testTextInput
+            multiline: True
+            # hint_text: "Test text goes here..."
+            font_size: 18
+            mode: "fill"
+            valign: 'bottom'
+            size_hint: (1, .5)
+
+
+<StatisticsScreen>:
+    name: 'statistics'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        Image:
+            pos: self.pos
+            size: self.size
+            source: 'images/statistics/keyboard.png'
+        MDLabel:
+            id: statisticsDisplay
+            text: "Word Count:                      Time:                       Words Per Minute:"
+            valign: 'top'
+            size_hint: (1, .3)
+
+
+# <LoginScreen>:
+#     name: 'login'
+#     canvas:
+#         Color:
+#             rgba: 1, .73333333333, 0, 1
+#         Rectangle:
+#             pos: self.pos
+#             size: self.size
+#     BoxLayout:
+#         orientation: 'vertical'
+#         padding: [10,350,10,350]
+#         spacing: 50
+#         MDLabel:
+#             text: "username"
+#             halign: 'left'
+#             font_size: 30
+#             size_hint: (1, .5)
+#         TextInput: 
+#             id: username
+#             height: 10
+#             multiline: False
+#             fontsize: 20
+#         BoxLayout:
+#             orientation: 'vertical'
+#         MDLabel:
+#             text: "password"
+#             halign: 'left'
+#             font_size: 30
+#             size_hint: (1, .5)
+#         TextInput: 
+#             id: password
+#             height: 10
+#             multiline: False
+#             password: True
+#             fontsize: 20
+
+
+<AccountScreen>:
+    name: 'account'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        orientation: 'vertical'
+        padding: [70,100,100,300]
+        spacing: 50
+        Image:
+            id: profilepic
+            size_hint: None, 4
+            pos_hint: {'right':1, 'top':1}
+            width: 250
+            height: 400
+            pos: 200, 300
+            allow_stretch: True
+            source: 'images/fakeprofileimage.jpg'
+        MDLabel:
+            text: "Name"
+            halign: 'left'
+            font_size: 30
+            size_hint: (1, .5)
+        TextInput: 
+            id: name
+            height: 10
+            multiline: False
+            fontsize: 20
+        MDLabel:
+            text: "Email"
+            halign: 'left'
+            font_size: 30
+            size_hint: (1, .5)
+        TextInput: 
+            id: email
+            height: 10
+            multiline: False
+            fontsize: 20
+        MDLabel:
+            text: "Top WPM"
+            secondary_text: "WPM: 9999999999999999999"
+            halign: 'left'
+            font_size: 30
+            size_hint: (1, .5)
+
+
+<LeaderboardScreen>:
+    name: 'leaderboard'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'horizontal'
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            MDList:
+                valign: 'bottom'
+                # OneLineListItem:
+                #     text: "Leaderboard"
+                TwoLineAvatarListItem:
+                    text: "Hal 9000"
+                    secondary_text: "WPM: 9999999999999999999"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/hal.jpg"
+                TwoLineAvatarListItem:
+                    text: "John Rambo"
+                    secondary_text: "WPM: 7800"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/rambo.jpg"
+                TwoLineAvatarListItem:
+                    text: "Angela Merkel"
+                    secondary_text: "WPM: 3120"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/merkel.jpg"
+                TwoLineAvatarListItem:
+                    text: "David Bowie"
+                    secondary_text: "WPM: 162"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/bowie.jpg"
+                TwoLineAvatarListItem:
+                    text: "Trent Reznor"
+                    secondary_text: "WPM: 158"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/reznor.jpg"
+                TwoLineAvatarListItem:
+                    text: "Gengar Fan"
+                    secondary_text: "WPM: 134"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/gengar.jpg"
+                TwoLineAvatarListItem:
+                    text: "Zowie Bowie"
+                    secondary_text: "WPM: 93"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/zowie.jpg"
+                TwoLineAvatarListItem:
+                    text: "Han Solo"
+                    secondary_text: "WPM: 57"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/solo.jpg"
+                TwoLineAvatarListItem:
+                    text: "The Dude"
+                    secondary_text: "WPM: 45"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/dude.jpg"
+                TwoLineAvatarListItem:
+                    text: "You:"
+                    secondary_text: "userWPM"
+                    ImageLeftWidget:
+                        source: "images/leaderboard/user.png"
+
+
+<SettingScreen>:
+    name: 'settings'
+    canvas:
+        Color:
+            rgba: 1, .73333333333, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'horizontal'
+        ToggleButton:
+            size_hint: (.5, None)
+            # pos_hint: (0, 0)
+            height: root.height * .1
+            id: textMode
+            text: 'Regular Text'
+            group: 'textMode'
+            state: 'down'
+            on_state: root.on_state()
+            allow_no_selection: False
+        ToggleButton:
+            size_hint: (.5, None)
+            # pos_hint: (0, 0.6)
+            height: root.height * .1
+            id: codeMode
+            text: 'Code Mode'
+            group: 'textMode'
+            on_state: root.on_state()
+            allow_no_selection: False

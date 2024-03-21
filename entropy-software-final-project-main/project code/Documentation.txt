@@ -1,0 +1,10 @@
+Steps to Run:
+- Install Kivy: https://kivy.org/doc/stable/gettingstarted/installation.html
+- Use command: 'python -m pip install --upgrade pip setuptools virtualenv' to install virtual environment
+- Use command: 'python -m virtualenv kivy_venv' to create a virtual environment for Kivy
+- Activate the virtual environment: YOU WILL HAVE TO DO THIS EVERY TIME YOU START A NEW TERMINAL: https://kivy.org/doc/stable/gettingstarted/installation.html
+- Install Kivy base: 'python -m pip install "kivy[base,media]" '
+- Install KivyMD: 'python -m pip install kivymd'
+- (optional) Install Kivy Examples: "python -m pip install kivy_examples
+- (optional) To view kivy examples, run a demo: 'python kivy_venv\share\kivy-examples\demo\showcase\main.py' on windows or 'python kivy_venv/share/kivy-examples/demo/showcase/main.py' on Linux, bash, or MacOS.
+- If you're using VS code, I've installed this extension for highlighting Kivy: https://marketplace.visualstudio.com/items?itemName=BattleBas.kivy-vscode
